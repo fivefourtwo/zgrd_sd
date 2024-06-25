@@ -10,6 +10,7 @@ app = Flask(__name__, static_url_path='/static')
 
 API_URL = "http://localhost:7861/sdapi/v1/txt2img"
 OPTIONS_URL = "http://localhost:7861/sdapi/v1/options"
+PROGRESS_URL = "http://localhost:7861/sdapi/v1/progress"
 MODELS_URL = "http://localhost:7861/sdapi/v1/sd-models"
 MODEL_PATH = os.path.join(os.getcwd(), "models", "dreamshaperXL_sfwLightningDPMSDE.safetensors")
 MODEL_CONFIG = os.path.join(os.getcwd(), "models", "dreamshaperXL_sfwLightningDPMSDE.safetensors.json")
@@ -94,6 +95,19 @@ def generate():
     else:
         logging.error(f"API request failed with status {response.status_code}: {response.text}")
         return jsonify({'error': 'Failed to generate image'}), 500
+    
+@app.route('/progress', methods=['GET'])
+def progress():
+    try:
+        progress_response = requests.get(PROGRESS_URL)
+        if progress_response.status_code == 200:
+            return jsonify(progress_response.json())
+        else:
+            return jsonify({'error': 'Failed to retrieve progress'}), 500
+    except Exception as e:
+        logging.error(f"Error fetching progress: {e}")
+        return jsonify({'error': 'An error occurred while fetching progress'}), 500
+
 
 @app.route('/outputs/<filename>')
 def serve_image(filename):

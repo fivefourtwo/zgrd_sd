@@ -11,12 +11,23 @@ document.getElementById('generate-form').addEventListener('submit', async functi
     resultDiv.style.display = 'none';
     progressBar.style.width = '0%';
 
-    const interval = setInterval(() => {
-        const width = parseInt(progressBar.style.width);
-        if (width < 100) {
-            progressBar.style.width = (width + 1) + '%';
-        }
-    }, 100);
+    let progressInterval;
+
+    const startProgressPolling = () => {
+        progressInterval = setInterval(async () => {
+            const progressResponse = await fetch('/progress');
+            if (progressResponse.ok) {
+                const progressData = await progressResponse.json();
+                const progress = progressData.progress * 100;
+                progressBar.style.width = `${progress}%`;
+                if (progress >= 100) {
+                    clearInterval(progressInterval);
+                }
+            }
+        }, 1000); // Poll every second
+    };
+
+    startProgressPolling();
 
     const response = await fetch('/generate', {
         method: 'POST',
@@ -28,7 +39,7 @@ document.getElementById('generate-form').addEventListener('submit', async functi
         })
     });
 
-    clearInterval(interval);
+    clearInterval(progressInterval);
     progressBar.style.width = '100%';
 
     if (response.ok) {
