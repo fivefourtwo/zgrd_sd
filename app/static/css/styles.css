@@ -128,9 +128,8 @@ body {
     padding: 20px;
     border: 1px solid #e0e0e0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width:fit-content;
+    width: fit-content;
     box-sizing: border-box;
-    /* min-width: 552px; */
     text-align: center;
     margin: 20px;
 }
@@ -163,15 +162,16 @@ input[type="text"] {
     box-sizing: border-box;
 }
 
-.mdc-button {
+button.mdc-button,
+button.mdc-button--outlined {
     display: inline-block;
     font-family: 'Theinhardt';
     font-size: 0.875rem;
     font-weight: normal;
-    /* letter-spacing: 0.0892857em; */
+    letter-spacing: 0.0892857em;
     text-decoration: none;
     text-transform: uppercase;
-    /* padding: 0 16px; */
+    padding: 0 16px;
     min-width: 64px;
     height: 40px;
     border-radius: 0;
@@ -180,28 +180,28 @@ input[type="text"] {
     outline: none;
     transition: box-shadow 0.2s;
     margin-top: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+button.mdc-button {
     color: #fff;
     background-color: #73BA1D;
 }
 
-/* .mdc-button--raised {
-    color: #fff;
-    background-color: #73BA1D;
-} */
-
-.mdc-button:hover {
+button.mdc-button:hover {
     background-color: #fff;
     border: 2px solid #73BA1D;
     color: #73BA1D;
 }
 
-.mdc-button--outlined {
+button.mdc-button--outlined {
     background-color: #fff;
     border: 2px solid #73BA1D;
     color: #73BA1D;
 }
 
-.mdc-button--outlined:hover {
+button.mdc-button--outlined:hover {
     color: #fff;
     background-color: #73BA1D;
 }
@@ -244,12 +244,9 @@ input[type="text"] {
 }
 
 #result {
-    display: flex;
-    flex-direction: column;
     display: none;
-    /* width: 512px; */
-    /* box-sizing: border-box; */
-    /* margin-top: 20px; */
+    flex-direction: column;
+    width: 100%;
 }
 
 #generation-time {
@@ -257,19 +254,6 @@ input[type="text"] {
     font-size: 14px;
     color: #333;
 }
-
-/* #download-button {
-    display: inline-flex;
-    height: 40px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    flex-shrink: 0;
-    border: 2px #73BA1D;
-    border-radius: 1px;
-    color: #73BA1D;
-} */
 
 @media (max-width: 600px) {
     .container {
@@ -282,7 +266,8 @@ input[type="text"] {
         font-size: 20px;
     }
 
-    .mdc-button {
+    .mdc-button,
+    .mdc-button--outlined {
         width: 100%;
         box-sizing: border-box;
     }

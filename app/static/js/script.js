@@ -4,7 +4,6 @@ document.getElementById('generate-form').addEventListener('submit', async functi
     const prompt = document.getElementById('prompt').value;
     const loadingSpinner = document.getElementById('loading-spinner');
     const resultDiv = document.getElementById('result');
-    const imagePlaceholder = document.getElementById('image-placeholder');
     const imageElement = document.getElementById('generated-image');
     const downloadButton = document.getElementById('download-button');
     const generationTimeElement = document.getElementById('generation-time');

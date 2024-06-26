@@ -13,15 +13,15 @@
         <form id="generate-form">
             <label for="prompt">Prompt:</label>
             <input type="text" id="prompt" name="prompt" required>
-            <button type="submit" class="mdc-button mdc-button">Generate</button>
+            <button type="submit" class="mdc-button">Generate</button>
         </form>
         <div id="image-placeholder" class="image-placeholder">
             <div id="loading-spinner" class="spinner"></div>
             <img id="generated-image" src="" alt="Generated Image">
         </div>
-        <div id="result-form">
+        <div id="result" style="display: none;">
             <p id="generation-time"></p>
-            <button id="download-button" class="mdc-button mdc-button--outlined">Download Image</button>
+            <button id="download-button" class="mdc-button mdc-button--outlined" style="display: none;">Download Image</button>
         </div>
     </div>
     <script src="/static/js/script.js"></script>
