@@ -6,14 +6,14 @@ import logging
 import uuid
 import time
 
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__, static_url_path='/static', template_folder='templates', static_folder='static')
 
 API_URL = "http://localhost:7861/sdapi/v1/txt2img"
 OPTIONS_URL = "http://localhost:7861/sdapi/v1/options"
 MODELS_URL = "http://localhost:7861/sdapi/v1/sd-models"
-MODEL_PATH = os.path.join(os.getcwd(), "models", "dreamshaperXL_sfwLightningDPMSDE.safetensors")
-MODEL_CONFIG = os.path.join(os.getcwd(), "models", "dreamshaperXL_sfwLightningDPMSDE.safetensors.json")
-OUTPUT_FOLDER = "D:/outputs"
+MODEL_PATH = os.path.join(os.getcwd(), "../models/dreamshaperXL_sfwLightningDPMSDE.safetensors")
+MODEL_CONFIG = os.path.join(os.getcwd(), "../models/dreamshaperXL_sfwLightningDPMSDE.json")
+OUTPUT_FOLDER = os.path.join(os.getcwd(), "../outputs")
 
 if not os.path.exists(OUTPUT_FOLDER):
     os.makedirs(OUTPUT_FOLDER)
