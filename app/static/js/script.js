@@ -2,32 +2,16 @@ document.getElementById('generate-form').addEventListener('submit', async functi
     event.preventDefault();
 
     const prompt = document.getElementById('prompt').value;
-    const progressBar = document.getElementById('progress-bar');
+    const loadingSpinner = document.getElementById('loading-spinner');
     const resultDiv = document.getElementById('result');
+    const imagePlaceholder = document.getElementById('image-placeholder');
     const imageElement = document.getElementById('generated-image');
     const downloadLink = document.getElementById('download-link');
     const generationTimeElement = document.getElementById('generation-time');
 
     resultDiv.style.display = 'none';
-    progressBar.style.width = '0%';
-
-    let progressInterval;
-
-    const startProgressPolling = () => {
-        progressInterval = setInterval(async () => {
-            const progressResponse = await fetch('/progress');
-            if (progressResponse.ok) {
-                const progressData = await progressResponse.json();
-                const progress = progressData.progress * 100;
-                progressBar.style.width = `${progress}%`;
-                if (progress >= 100) {
-                    clearInterval(progressInterval);
-                }
-            }
-        }, 1000); // Poll every second
-    };
-
-    startProgressPolling();
+    imageElement.style.display = 'none';
+    loadingSpinner.style.display = 'block';
 
     const response = await fetch('/generate', {
         method: 'POST',
@@ -39,8 +23,7 @@ document.getElementById('generate-form').addEventListener('submit', async functi
         })
     });
 
-    clearInterval(progressInterval);
-    progressBar.style.width = '100%';
+    loadingSpinner.style.display = 'none';
 
     if (response.ok) {
         const data = await response.json();

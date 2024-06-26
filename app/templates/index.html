@@ -5,22 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Generator</title>
     <link rel="stylesheet" href="/static/css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Image Generator</h1>
+        <h1>Zweigrad Image Generator</h1>
         <form id="generate-form">
             <label for="prompt">Prompt:</label>
             <input type="text" id="prompt" name="prompt" required>
-            <button type="submit">Generate</button>
+            <button type="submit" class="mdc-button mdc-button--raised">Generate</button>
         </form>
-        <div id="progress-container">
-            <div id="progress-bar"></div>
+        <div id="image-placeholder" class="image-placeholder">
+            <div id="loading-spinner" class="spinner"></div>
+            <img id="generated-image" src="" alt="Generated Image">
         </div>
         <div id="result">
-            <img id="generated-image" src="" alt="Generated Image">
             <p id="generation-time"></p>
-            <a id="download-link" href="#" download>Download Image</a>
+            <a id="download-link" href="#" download class="mdc-button mdc-button--outlined">Download Image</a>
         </div>
     </div>
     <script src="/static/js/script.js"></script>
