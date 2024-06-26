@@ -125,18 +125,19 @@ body {
 
 .container {
     background-color: #fff;
-    padding: 20px;
+    padding: 24px;
     border: 1px solid #e0e0e0;
+    border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: fit-content;
     box-sizing: border-box;
     text-align: center;
-    margin: 20px;
+    margin: 24px;
 }
 
 h1 {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     color: #333;
     font-weight: bold;
 }
@@ -154,10 +155,13 @@ label {
 }
 
 input[type="text"] {
-    padding: 10px;
+    font-family: 'Theinhardt';
+    font-weight: normal;
+    padding: 8px;
     font-size: 16px;
     border: 1px solid #ccc;
-    margin-bottom: 20px;
+    border-radius: 2px;
+    margin-bottom: 16px;
     width: 100%;
     box-sizing: border-box;
 }
@@ -174,7 +178,7 @@ button.mdc-button--outlined {
     padding: 0 16px;
     min-width: 64px;
     height: 40px;
-    border-radius: 0;
+    border-radius: 2px;
     border: none;
     cursor: pointer;
     outline: none;
@@ -211,7 +215,8 @@ button.mdc-button--outlined:hover {
     width: 512px;
     height: 512px;
     border: 1px solid #ccc;
-    margin: 20px auto;
+    border-radius: 2px;
+    margin-top: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -221,12 +226,24 @@ button.mdc-button--outlined:hover {
 
 .spinner {
     display: none;
-    width: 50px;
-    height: 50px;
-    border: 5px solid #ddd;
-    border-top: 5px solid #73BA1D;
+    box-sizing: border-box;
+    width: 40px;
+    height: 40px;
+    border: 12px solid #73BA1D;
+    margin: 6px;
     border-radius: 50%;
-    animation: spin 1s linear infinite;
+    animation: spin 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    /* animation-duration: 1.5s;
+    animation-timing-function: cubic-bezier(0.5, 0, 0.5, 1);
+    animation-delay: 0s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: loader;
+    animation-timeline: auto;
+    animation-range-start: normal; */
+    border-color: #73BA1D transparent transparent transparent;
 }
 
 @keyframes spin {
@@ -250,7 +267,7 @@ button.mdc-button--outlined:hover {
 }
 
 #generation-time {
-    margin-top: 10px;
+    margin-top: 4px;
     font-size: 14px;
     color: #333;
 }
